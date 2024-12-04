@@ -1,5 +1,76 @@
 {%extends 'AppRiver/base.html'%}
 {% load static %}
 {% block main %}
-
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Servicios</h2>
+            <h3 class="section-subheading text-muted">A continuacion vas a tener detallado los servicios de lo que vas a podes hacer uso dentro de la web.</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x" style="color: red;"></i>
+                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Tienda River</h4>
+                <p class="text-muted">La grandeza de River no sólo está ligada a lo futbolístico sino que también contagia con su filosofía al ámbito social y educacional.                                             
+                    A través de nuestra Tienda Oficial buscamos democratizar el acceso a los productos oficiales a todos nuestros hinchas, estén en donde estén.                            
+                    ¡Esperamos que disfrutes nuestra tienda!</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x" style="color: red;"></i>
+                    <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Reserva de Entradas/Actividades</h4>
+                <p class="text-muted">Mediante la web se podra hacer reservas tanto para el uso de sectores sociales, como para la compra o reserva de entradas.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x"style="color: red;"></i>
+                    <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Seguridad</h4>
+                <p class="text-muted">Podemos asegurarles que la informacion, tanto bancaria como personal va a estar bien resguardada.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Team-->
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Autoridades</h2>
+            <h3 class="section-subheading text-muted">Estas son las principales autoridades de River Plate.</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{% static 'AppRiver/assets/img/team/1.jpg'%}" alt="..." />
+                    <h4>Matias Patanian</h4>
+                    <p class="text-muted">Vicepresidente</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{% static 'AppRiver/assets/img/team/2.jpg'%}" alt="..." />
+                    <h4>Jorge Brito</h4>
+                    <p class="text-muted">Presidente</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="{% static 'AppRiver/assets/img/team/3.jpg'%}" alt="..." />
+                    <h4>Stefano Cozza Di Carlo</h4>
+                    <p class="text-muted">Candidato a presidente 2025 con el oficialismo</p>
+               </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Jorge Brito es presidente del club desde 2021 y en 2025 hay elecciones nuevamente.</p></div>
+        </div>
+    </div>
+</section>
 {% endblock main %}

@@ -1,0 +1,56 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<!-- Contenido principal -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Ustedes alentando al Más Grande</h1>
+
+    <!-- Partido 1 -->
+    <div class="partido mb-5">
+        <div class="row">
+            <!-- Columna para el resultado -->
+            <div class="col-md-8">
+                <h3>Partido 1: Nacional (URU) vs River Plate </h3>
+                <p><strong>Resultado:</strong> Nacional (URU) 2 - River Plate 2</p>
+                <p><strong>Fecha:</strong> 7 de Mayo de 2024</p>
+            </div>
+            <!-- Columna para la imagen -->
+            <div class="col-md-4">
+                <img src="{% static 'AppRiver/assets/img/Ustedes/riv1.jpg' %}" class="img-fluid" alt="Imagen del partido 1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Partido 2 -->
+    <div class="partido mb-5">
+        <div class="row">
+            <!-- Columna para el resultado -->
+            <div class="col-md-8">
+                <h3>Partido 2: River Plate vs Boca Juniors</h3>
+                <p><strong>Resultado:</strong> River Plate 3 - Boca Juniors 1</p>
+                <p><strong>Fecha:</strong> 9 de diciembre de 2018</p>
+            </div>
+            <!-- Columna para la imagen -->
+            <div class="col-md-4">
+                <img src="{% static 'AppRiver/assets/img/Ustedes/riv2.jpg' %}" class="img-fluid" alt="Imagen del partido 2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Partido 3 -->
+    <div class="partido mb-5">
+        <div class="row">
+            <!-- Columna para el resultado -->
+            <div class="col-md-8">
+                <h3>Partido 3: River Plate vs Belgrano</h3>
+                <p><strong>Resultado:</strong> River Plate 2 - Belgrano 1</p>
+                <p><strong>Fecha:</strong> 3 de diciembre de 2023</p>
+            </div>
+            <!-- Columna para la imagen -->
+            <div class="col-md-4">
+                <img src="{% static 'AppRiver/assets/img/Ustedes/riv3.jpg' %}" class="img-fluid" alt="Imagen del partido 3">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
