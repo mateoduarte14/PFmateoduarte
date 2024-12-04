@@ -23,17 +23,18 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="{% static 'AppRiver/assets/img/navbar-logo.png'%}" alt="..." /></a>
+                <a class="navbar-brand" href="{% url 'Inicio'%} "><img src="{% static 'AppRiver/assets/img/navbar-logo.png'%}" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#Hinchada">Hinchada</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#Hoy Juega River">Hoy Juega River</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#Iniciar Sesion">Iniciar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#Registro">Registro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Hinchada</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Historia'%}">Historia</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'JuegaRiver' %}">Hoy Juega River</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Iniciar Sesion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Registro</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,9 +44,10 @@
             <div class="container">
                 <div class="masthead-heading text-uppercase">River Plate</div>
                 <div class="masthead-subheading">El más grande lejos...</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Más info</a>
             </div>
         </header>
+        {% block main %}
+        
         <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
@@ -617,3 +619,4 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
+{% endblock main %}
