@@ -1,0 +1,7 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+{% for socio in socios %}
+<li>Socio: {{socio.nombre }} {{socio.apellido}}<br>Numero Socio: {{socio.numero_socio}}</li>
+{% endfor %}
+{% endblock main %}

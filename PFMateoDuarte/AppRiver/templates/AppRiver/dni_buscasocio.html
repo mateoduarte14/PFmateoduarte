@@ -1,0 +1,11 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<form action="{% url 'SocioBuscar' %}" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form_buscar }}
+    </table>
+    <input type="submit" value="Buscar">
+</form>
+{% endblock main %}

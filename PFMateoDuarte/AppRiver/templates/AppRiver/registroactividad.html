@@ -1,0 +1,22 @@
+{% extends 'AppRiver/base.html' %}
+{% load static %}
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Socio</title>
+</head>
+<body>
+    <form action="{% url 'ActividadFormulario' %}" method="POST">
+
+        {% csrf_token %}
+
+        <table>
+            {{ form_actividad.as_table }}
+        </table>
+        <input type="submit" value="Registrar">
+
+    </form>
+{% endblock main %}
