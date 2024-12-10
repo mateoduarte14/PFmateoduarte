@@ -10,7 +10,7 @@ class Socio(models.Model):
     categoria_socio = models.CharField(max_length=30)
     numero_socio = models.IntegerField()
     def __str__(self):
-        return f'{self.id} | {self.nombre}{self.apellido} | {self.categoria_socio}'
+        return f'{self.id} | DNI: {self.DNI} | Nombre y Apellido: {self.nombre}{self.apellido} | Categoria: {self.categoria_socio}'
 
 class Actividad(models.Model):
     nombre = models.CharField(max_length=25)

@@ -1,12 +1,13 @@
 from django.urls import path
-from AppRiver.views import inicio, hist, rivhoy, riv14, socio_formulario, buscar_socio,actividad_formulario,entrada_formulario,entradacopa_formulario
+from AppRiver.views import inicio, historia, river_hoy, river_14, socio_formulario, buscar_socio,actividad_formulario,entrada_formulario,entradacopa_formulario, leer_Socios
 
 
 urlpatterns = [
     path('', inicio,name='Inicio'),
-    path('historia/', hist, name= 'Monumental'),
-    path('HoyJuegaRiver/', rivhoy, name= 'JuegaRiver'),
-    path('Hinchas/',riv14, name= 'Hinchada')
+    path('historia/', historia, name= 'Monumental'),
+    path('HoyJuegaRiver/', river_hoy, name= 'JuegaRiver'),
+    path('Hinchas/',river_14, name= 'Hinchada'),
+    path('leersocios',leer_Socios, name = "LeerSocio")
 ]
 
 forms_api = [

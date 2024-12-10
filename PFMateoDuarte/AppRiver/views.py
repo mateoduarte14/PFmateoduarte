@@ -6,13 +6,13 @@ from AppRiver.forms import RegsSocio, BuscaSocio, AnotarActividad, IngresarEntra
 def inicio(request):
     return render(request, "AppRiver/hijo.html")
 
-def hist(request):
+def historia(request):
     return render(request, "AppRiver/historia.html")
 
-def rivhoy(request):
+def river_hoy(request):
     return render(request, "AppRiver/hoyjuegariver.html")
 
-def riv14(request):
+def river_14(request):
     return render(request, "AppRiver/hinchada.html")
 
 def socio_formulario(request):
@@ -92,3 +92,11 @@ def entradacopa_formulario(request):
         form_entradacopa = IngresarEntrada()
     
     return render(request, "AppRiver/registroentradacopa.html", {"form_entradacopa": form_entradacopa})
+
+def leer_Socios(request):
+
+      socios = Socio.objects.all()
+
+      contexto = {"socios": socios} 
+
+      return render(request, "AppRiver/leersocio.html",contexto)
