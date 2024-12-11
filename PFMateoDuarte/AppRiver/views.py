@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from AppRiver.models import Socio, Actividad, EntradasTorneoLocal, EntradasCopa
 from AppRiver.forms import RegsSocio, BuscaSocio, AnotarActividad, IngresarEntrada, IngresarEntradaCopa
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 def inicio(request):
@@ -93,10 +97,43 @@ def entradacopa_formulario(request):
     
     return render(request, "AppRiver/registroentradacopa.html", {"form_entradacopa": form_entradacopa})
 
-def leer_Socios(request):
+def leer_socios(request):
 
       socios = Socio.objects.all()
 
       contexto = {"socios": socios} 
 
       return render(request, "AppRiver/leersocio.html",contexto)
+
+def eliminar_socio(request, dni_socio):
+
+    socio_borrar = Socio.objects.get(DNI=dni_socio)
+    socio_borrar.delete()
+
+    return render(request, "AppRiver/leersocio.html")
+
+class SocioListView(ListView):
+    model = Socio
+    context_object_name = "socios"
+    template_name = "AppRiver/socio_lista.html"
+
+class SocioDetailView(DetailView):
+    model = Socio
+    template_name = "AppRiver/socio_detalle.html"
+
+class SocioCreateView(CreateView):
+    model = Socio
+    template_name = "AppRiver/socio_crear.html"
+    success_url = reverse_lazy('SocioLista')
+    fields = ['nombre', 'apellido', 'DNI', 'fecha_nacimiento', 'categoria_socio', 'numero_socio']
+
+class SocioUpdateView(UpdateView):
+    model = Socio
+    template_name = "AppRiver/socio_modificar.html"
+    success_url = reverse_lazy('SocioLista')
+    fields = ['nombre', 'apellido', 'DNI', 'fecha_nacimiento', 'categoria_socio', 'numero_socio']
+
+class SocioDeleteView(DeleteView):
+    model = Socio
+    template_name = "AppRiver/socio_eliminar.html"
+    success_url = reverse_lazy('SocioLista')

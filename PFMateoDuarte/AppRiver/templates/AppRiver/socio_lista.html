@@ -1,0 +1,21 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<h1>Listado Socios</h1>
+
+{% for s in socios %}
+        <li>Socio: {{s.nombre}} {{s.apellido}}
+            <p>
+                <a href="{%url 'SocioDetalle' s.pk %}">Ver</a>
+                |
+                <a href="{%url 'SocioModificar' s.pk %}">Modificar</a>
+                |
+                <a href="{%url 'SocioEliminar' s.pk %}">Eliminar</a>
+
+            </p>
+            
+        </li>
+{% endfor %}
+<br>
+<a href="{% url 'SocioCrear' %}">Registrar Socio</a>
+{% endblock main %}

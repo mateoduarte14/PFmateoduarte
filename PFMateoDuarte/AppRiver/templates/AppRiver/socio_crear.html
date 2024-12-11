@@ -1,0 +1,11 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<h1>Registrar Socio Nuevo</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Registrar">
+</form>
+{% endblock main %}

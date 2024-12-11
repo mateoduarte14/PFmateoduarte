@@ -1,0 +1,12 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<h1>Eliminar Socio</h1>
+
+<form action=""  method="POST">
+    {% csrf_token %}
+    Seguro que queres borrar al socio №{{socio.numero_socio}}??
+    <input type="submit" value="Eliminar">
+</form>
+
+{% endblock main %}

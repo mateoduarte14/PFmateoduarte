@@ -1,0 +1,13 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+<h1>Socio №{{socio.numero_socio}}</h1>
+
+<p>Nombre: <i>{{socio.nombre}}</i></p>
+<p>Apellido: <i>{{socio.apellido}}</i></p>
+<p>DNI: <i>{{socio.DNI}}</i></p>
+<p>Fecha de Nacimiento: <i>{{socio.fecha_nacimiento}}</i></p>
+<p>Categoria Socio: <i>{{socio.categoria_socio}}</i></p>
+<p>Numero Socio: <i>{{socio.numero_socio}}</i></p>
+
+{% endblock main %}
