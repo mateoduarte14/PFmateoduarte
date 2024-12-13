@@ -5,8 +5,10 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 def inicio(request):
     return render(request, "AppRiver/hijo.html")
 
