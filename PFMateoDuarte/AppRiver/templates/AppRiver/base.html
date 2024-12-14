@@ -38,8 +38,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Hinchada'%}">Hinchada</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Monumental'%}">Estadio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'JuegaRiver'%}">Hoy Juega River</a></li>
-                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'JuegaRiver'%}">Hoy Juega River</a></li>                        
                     <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Reservas
@@ -67,10 +66,14 @@
                     Cuenta
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="{% url 'Login' %}">Iniciar Sesión</a></li>
-                    <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar Sesion</a></li>
+
+
+                  {% if request.user.is_authenticated %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'Logout'%}">Cerrar Sesion</a></li>
+                  {% else %}
+                  <li><a class="dropdown-item" href="{% url 'Login' %}">Iniciar Sesión</a></li>
+                  {% endif %}
                   <li><a class="dropdown-item" href="{% url 'Registro' %}">Crear Cuenta</a></li>
-                  
         </ul>
     </div>
         </nav>

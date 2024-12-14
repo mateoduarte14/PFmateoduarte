@@ -6,8 +6,9 @@ from Socios.forms import UserRegisterForm
 # Create your views here.
 
 
-def loguear(request):
+def login(request):
 
+      msg_login = ""
       if request.method == "POST":
             form = AuthenticationForm(request, data = request.POST)
 
@@ -16,37 +17,29 @@ def loguear(request):
                   usuario = form.cleaned_data.get('username')
                   contra = form.cleaned_data.get('password')
 
-                  user = authenticate(username=usuario, password=contra)
+                  socio = authenticate(username=usuario, password=contra)
 
-            
-                  if user is not None:
-                        login(request, user)
-                       
-                        return render(request,"AppRiver/hijo.html",  {"mensaje":f"Bienvenido {usuario}"} )
-                  else:
-                        
-                        return render(request,"Socios/login.html", {"form": form,"mensaje":"Error, datos incorrectos"} )
-
-            else:
-                        
-                        return render(request,"Socios/login.html" ,  {"form": form,"mensaje":"Error, formulario erroneo"})
+                  if socio is not None:
+                        login(request)
+                        return render(request,"AppRiver/hijo.html")
+                  
+            msg_login = "Usuario o Contraseña invalidos"
 
       form = AuthenticationForm()
+      return render(request,"Socios/login.html", {'form':form, "msg_login": msg_login} )
 
-      return render(request,"Socios/login.html", {'form':form} )
 
+def regist(request):
 
-def registrar(request):
-
-    if request.method == 'POST':
+      msg_register = ""
+      if request.method == 'POST':
 
             form = UserRegisterForm(request.POST)
             if form.is_valid():
 
-                  username = form.cleaned_data['username']
                   form.save()
-                  return render(request,"AppRiver/hijo.html" ,  {"mensaje":"Usuario Creado Correctamente"})
-    else:
-        form = UserRegisterForm()     
+                  return render(request,"AppRiver/hijo.html")
+            msg_register="Error en los datos ingresados"
 
-    return render(request,"Socios/register.html" ,  {"form":form})
+      form = UserRegisterForm()     
+      return render(request,"Socios/register.html" ,  {"form":form, "msg_register":msg_register})

@@ -1,14 +1,21 @@
 {%extends 'AppRiver/base.html'%}
 {% load static %}
+{% block title %} Registro {% endblock title %}
 {% block main %}
-<form action="" method="POST">
-    {% csrf_token %}
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column">
+        <p class="fs-5 fw-bold">{{ msg_register }}</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+        
+            {{form.as_p}}
+        
+            <button type="submit">Registrate</button>
+        
+        
+        </form>
+    </div>
+</div>
 
-    {{form.as_p}}
-
-    <button type="submit">Registrate</button>
-
-
-</form>
 
 {% endblock main %}

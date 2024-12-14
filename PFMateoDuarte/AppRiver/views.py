@@ -5,22 +5,22 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-
 # Create your views here.
 
 def inicio(request):
     return render(request, "AppRiver/hijo.html")
-
+@login_required
 def historia(request):
     return render(request, "AppRiver/historia.html")
-
+@login_required
 def river_hoy(request):
     return render(request, "AppRiver/hoyjuegariver.html")
-
+@login_required
 def river_14(request):
     return render(request, "AppRiver/hinchada.html")
-
+@login_required
 def socio_formulario(request):
     if request.method == 'POST':
         form_registrar = RegsSocio(request.POST)
@@ -36,7 +36,7 @@ def socio_formulario(request):
         form_registrar = RegsSocio()
     
     return render(request, "AppRiver/registrosocio.html", {"form_registrar": form_registrar})
-
+@login_required
 def buscar_socio(request):
     if request.method=="POST":
         form_buscar = BuscaSocio(request.POST)
@@ -50,7 +50,7 @@ def buscar_socio(request):
     else:
         form_buscar = BuscaSocio()
     return render(request,"AppRiver/dni_buscasocio.html", {"form_buscar":form_buscar})
-
+@login_required
 def actividad_formulario(request):
     if request.method == 'POST':
         form_actividad = AnotarActividad(request.POST)
@@ -66,7 +66,7 @@ def actividad_formulario(request):
         form_actividad = AnotarActividad()
     
     return render(request, "AppRiver/registroactividad.html", {"form_actividad": form_actividad})
-
+@login_required
 def entrada_formulario(request):
     if request.method == 'POST':
         form_entrada = IngresarEntrada(request.POST)
@@ -82,7 +82,7 @@ def entrada_formulario(request):
         form_entrada = IngresarEntrada()
     
     return render(request, "AppRiver/registroentrada.html", {"form_entrada": form_entrada})
-
+@login_required
 def entradacopa_formulario(request):
     if request.method == 'POST':
         form_entradacopa = IngresarEntradaCopa(request.POST)
@@ -98,7 +98,7 @@ def entradacopa_formulario(request):
         form_entradacopa = IngresarEntrada()
     
     return render(request, "AppRiver/registroentradacopa.html", {"form_entradacopa": form_entradacopa})
-
+@login_required
 def leer_socios(request):
 
       socios = Socio.objects.all()
@@ -106,7 +106,7 @@ def leer_socios(request):
       contexto = {"socios": socios} 
 
       return render(request, "AppRiver/leersocio.html",contexto)
-
+@login_required
 def eliminar_socio(request, dni_socio):
 
     socio_borrar = Socio.objects.get(DNI=dni_socio)
@@ -114,28 +114,29 @@ def eliminar_socio(request, dni_socio):
 
     return render(request, "AppRiver/leersocio.html")
 
-class SocioListView(ListView):
+class SocioListView(LoginRequiredMixin, ListView):
     model = Socio
     context_object_name = "socios"
     template_name = "AppRiver/socio_lista.html"
 
-class SocioDetailView(DetailView):
+class SocioDetailView(LoginRequiredMixin, DetailView):
     model = Socio
     template_name = "AppRiver/socio_detalle.html"
 
-class SocioCreateView(CreateView):
+class SocioCreateView(LoginRequiredMixin, CreateView):
     model = Socio
     template_name = "AppRiver/socio_crear.html"
     success_url = reverse_lazy('SocioLista')
     fields = ['nombre', 'apellido', 'DNI', 'fecha_nacimiento', 'categoria_socio', 'numero_socio']
 
-class SocioUpdateView(UpdateView):
+class SocioUpdateView(LoginRequiredMixin, UpdateView):
     model = Socio
     template_name = "AppRiver/socio_modificar.html"
     success_url = reverse_lazy('SocioLista')
     fields = ['nombre', 'apellido', 'DNI', 'fecha_nacimiento', 'categoria_socio', 'numero_socio']
 
-class SocioDeleteView(DeleteView):
+class SocioDeleteView(LoginRequiredMixin, DeleteView):
     model = Socio
     template_name = "AppRiver/socio_eliminar.html"
     success_url = reverse_lazy('SocioLista')
+
