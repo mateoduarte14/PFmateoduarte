@@ -6,7 +6,7 @@ from Socios.forms import UserRegisterForm
 # Create your views here.
 
 
-def login(request):
+def log(request):
 
       msg_login = ""
       if request.method == "POST":
@@ -20,7 +20,7 @@ def login(request):
                   socio = authenticate(username=usuario, password=contra)
 
                   if socio is not None:
-                        login(request)
+                        login(request, socio)
                         return render(request,"AppRiver/hijo.html")
                   
             msg_login = "Usuario o Contraseña invalidos"
