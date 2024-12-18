@@ -1,0 +1,17 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block title %} Editar Perfil {% endblock title %}
+{% block main %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table>
+
+        {{ formulario.as_table }}
+
+    </table>
+    
+    <input type="submit", value="Guardar Cambios">
+</form>
+<a class="nav-link" href="{% url 'CambiarContra' %}">Cambiar Contraseña</a>
+{% endblock main %}

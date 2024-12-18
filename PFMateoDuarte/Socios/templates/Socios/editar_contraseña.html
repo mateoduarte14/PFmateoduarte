@@ -1,0 +1,16 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block title %} Cambiar Contra {% endblock title %}
+{% block main %}
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+
+        {{ form }}
+
+    </table>
+    
+    <button>Cambiar Contraseña</button>
+</form>
+{% endblock main %}

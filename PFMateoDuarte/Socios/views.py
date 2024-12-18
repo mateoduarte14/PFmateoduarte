@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.views import LogoutView
-from Socios.forms import UserRegisterForm
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from Socios.forms import UserRegisterForm, UserEditForm
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -43,3 +46,34 @@ def regist(request):
 
       form = UserRegisterForm()     
       return render(request,"Socios/register.html" ,  {"form":form, "msg_register":msg_register})
+
+@login_required
+def editar_perfil(request):
+
+      usuario = request.user
+
+      if request.method == 'POST':
+
+            form = UserEditForm(request.POST, request.FILES, instance=usuario)
+
+            if form.is_valid():
+                  
+                  if form.cleaned_data.get('imagen'):
+
+                        usuario.avatar.imagen = form.cleaned_data.get('imagen')
+                        usuario.avatar.save()
+
+                  form.save()
+
+                  return render(request, "AppRiver/hijo.html")
+      else:
+            form = UserEditForm(instance=request.user)
+      
+      return render (request, "Socios/editarusuario.html", 
+                     {
+                           "formulario": form
+                     })
+
+class CambiarPassView(LoginRequiredMixin, PasswordChangeView):
+      template_name = "Socios/editar_contraseña.html"
+      success_url = reverse_lazy('EditarPerfil')

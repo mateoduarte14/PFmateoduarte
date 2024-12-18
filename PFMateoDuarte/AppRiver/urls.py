@@ -5,7 +5,7 @@ urlpatterns = [
     path('', inicio,name='Inicio'),
     path('historia/', historia, name= 'Monumental'),
     path('HoyJuegaRiver/', river_hoy, name= 'JuegaRiver'),
-    path('Hinchas/',river_14, name= 'Hinchada'),
+    path('Hinchas/',river_14, name= 'Hinchada')
 ]
 
 forms_api = [
