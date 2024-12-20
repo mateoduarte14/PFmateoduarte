@@ -4,9 +4,11 @@ from AppRiver.forms import RegsSocio, BuscaSocio, AnotarActividad, IngresarEntra
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 def inicio(request):
@@ -14,7 +16,7 @@ def inicio(request):
 @login_required
 def historia(request):
     return render(request, "AppRiver/historia.html")
-@login_required
+
 def river_hoy(request):
     return render(request, "AppRiver/hoyjuegariver.html")
 @login_required
@@ -140,3 +142,14 @@ class SocioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "AppRiver/socio_eliminar.html"
     success_url = reverse_lazy('SocioLista')
 
+def about(request):
+    return render(request, "AppRiver/Aboutme.html")
+
+def lista_urls(request):
+    contexto = [
+        {'name': 'Historia', 'url': reverse("Monumental")},
+        {'name': 'JuegaRiver', 'url': reverse("JuegaRiver")},
+        {'name': 'Hinchada', 'url': reverse("Hinchada")},
+        {'name': 'About Me', 'url': reverse("About")}
+    ]
+    return render(request, 'AppRiver/blogs.html', {'contexto':contexto})

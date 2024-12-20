@@ -1,0 +1,15 @@
+{%extends 'AppRiver/base.html'%}
+{% load static %}
+{% block main %}
+    <h1>Lista de URLs del Proyecto</h1>
+    <ul>
+        {% for url in contexto %}
+            <li><a>{{ url.name }}</a></li>
+            <p>
+                <a href="{{url.url}}">Ver Más</a>
+
+            </p>
+            
+        </li>
+{% endfor %}
+{% endblock main %}

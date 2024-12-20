@@ -6,6 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from Socios.forms import UserRegisterForm, UserEditForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from Socios.models import Avatar
+
 # Create your views here.
 
 
@@ -40,7 +42,8 @@ def regist(request):
             form = UserRegisterForm(request.POST)
             if form.is_valid():
 
-                  form.save()
+                  usuario = form.save()
+                  Avatar.objects.create(user=usuario, imagen='avatares/default.png')
                   return render(request,"AppRiver/hijo.html")
             msg_register="Error en los datos ingresados"
 
@@ -73,6 +76,7 @@ def editar_perfil(request):
                      {
                            "formulario": form
                      })
+
 
 class CambiarPassView(LoginRequiredMixin, PasswordChangeView):
       template_name = "Socios/editar_contraseña.html"
